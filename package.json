@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "start" :"npm run dev",
     "dev": "NODE_ENV=development PORT=3006 DB_USER=hussain DB_PASSWORD=44ggwzDdBU6VCYg5 node index.js",
     "prod": "NODE_ENV=production PORT=3006 DB_USER=hussain DB_PASSWORD=44ggwzDdBU6VCYg5 node index.js"
   },
