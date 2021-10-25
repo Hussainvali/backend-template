@@ -3,7 +3,7 @@ const { getResponseObject } = require("../../helpers/supporter");
 const { getSingleRow, createData } = require("../../models/dataModel");
 const { newObjectId } = require("../../helpers/cryptoUtils");
 const path = require("path");
-const imageThumbnail = require('image-thumbnail');
+// const imageThumbnail = require('image-thumbnail');
 const fs=require('fs');
 const saveProperty = async (db,propertyData) => {
 
@@ -49,15 +49,15 @@ module.exports.addProperty = async (req, res) => {
         images.push(path.join(iterator.destination, iterator.filename))
     }
     let options = { width: 100, height: 100,jpegOptions: { force:true, quality:90 } }
-    for (const iterator of images) {
-        const result = await imageThumbnail(iterator,options);
-        const buffer = Buffer.from(result, "base64");
-        fs.writeFileSync(`property_Image/101/thumbnail${new Date().getTime()}.jpg`, buffer);
-        thumbnail.push(`property_Image/101/thumbnail${new Date().getTime()}.jpg`)
-    }
+    // for (const iterator of images) {
+    //     const result = await imageThumbnail(iterator,options);
+    //     const buffer = Buffer.from(result, "base64");
+    //     fs.writeFileSync(`property_Image/101/thumbnail${new Date().getTime()}.jpg`, buffer);
+    //     thumbnail.push(`property_Image/101/thumbnail${new Date().getTime()}.jpg`)
+    // }
 
-    propertyData['images']=images;
-    propertyData['thumbnail']=thumbnail;
+    // propertyData['images']=images;
+    // propertyData['thumbnail']=thumbnail;
 
     await saveProperty(db,propertyData);
 

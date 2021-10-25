@@ -19,7 +19,6 @@
         "express": "~4.16.0",
         "express-winston": "^3.0.1",
         "http-errors": "~1.6.2",
-        "image-thumbnail": "^1.0.14",
         "json2csv": "^5.0.6",
         "jsonwebtoken": "^8.4.0",
         "lodash": "4.17.15",
