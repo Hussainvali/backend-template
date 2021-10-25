@@ -1,0 +1,17 @@
+{
+  "development": {
+    "database": "facebook",
+    "dialect": "postgres",
+    "host": "postgresql-55579-0.cloudclusters.net",
+    "port" : 19868,
+    "logging": false,
+    "operatorsAliases": false
+  },
+  "production": {
+    "database": "d8isdau5g7plsi",
+    "dialect": "postgres",
+    "host": "postgresql-55579-0.cloudclusters.net",
+    "port" : 19868,
+    "operatorsAliases": false
+  }
+}
