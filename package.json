@@ -45,7 +45,6 @@
       "request": "^2.88.0",
       "request-promise": "latest",
       "sequelize": "^4.42.0",
-      "sharp": "^0.29.2",
       "winston": "^3.1.0",
       "xml-js": "^1.6.9"
     },
