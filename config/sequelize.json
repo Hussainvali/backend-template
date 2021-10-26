@@ -8,7 +8,7 @@
     "operatorsAliases": false
   },
   "production": {
-    "database": "d8isdau5g7plsi",
+    "database": "facebook",
     "dialect": "postgres",
     "host": "postgresql-55579-0.cloudclusters.net",
     "port" : 19868,

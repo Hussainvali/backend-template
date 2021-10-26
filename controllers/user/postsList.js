@@ -8,10 +8,10 @@ const getPostsList = async (db,user,limit,offset) =>{
     return new Promise((resolve, reject) => {
 
        let queryData={
-           query:`SELECT *,c.comment FROM "Post" as p  JOIN "Comment" as c ON p."objectId"=c."PostId" WHERE "UserId"='${user.objectId}' group by p."objectId",c."objectId" LIMIT ${limit} OFFSET ${offset}`
+           query:`SELECT * FROM "Post" LIMIT ${limit} OFFSET ${offset}`
        }
 
-        getDataBasedOnQuery(db.Topic,queryData).then((data) => {
+        getDataBasedOnQuery(db.Post,queryData).then((data) => {
             resolve(data);
         }).catch((err) => {
             reject(err)
@@ -25,10 +25,10 @@ const getTotalPostsCount = async (db,user) =>{
     return new Promise((resolve, reject) => {
 
        let queryData={
-           query:`SELECT count(*) FROM "Post" WHERE "UserId"='${user.objectId}'`
+           query:`SELECT count(*) FROM "Post"`
        }
 
-        getDataBasedOnQuery(db.Topic,queryData).then((data) => {
+        getDataBasedOnQuery(db.Post,queryData).then((data) => {
             resolve(data);
         }).catch((err) => {
             reject(err)
@@ -58,7 +58,7 @@ module.exports.postsList = async (req, res) => {
     let data=await Promise.all([getPostsList(db,user,limit,offset),getTotalPostsCount(db,user)]);
 
     response.data = "success";
-    response.message = "topic created Successfully";
+    response.message = "posts list Successfully";
     response.data = {
         "post_list":data[0],
         "count":parseInt(data[1][0].count)

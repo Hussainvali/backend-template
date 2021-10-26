@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true
     },
-    name: {
+    UserId: {
       type: DataTypes.TEXT,
       allowNull: true
     },
@@ -15,8 +15,12 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT,
       allowNull: true
     },
-    images: {
-      type: "ARRAY",
+    lat: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    lng: {
+      type: DataTypes.TEXT,
       allowNull: true
     },
     createdAt: {
@@ -27,12 +31,8 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATE,
       allowNull: true
     },
-    UserId: {
-      type: DataTypes.TEXT,
-      allowNull: true
-    },
-    TopicId: {
-      type: DataTypes.TEXT,
+    images: {
+      type: "ARRAY",
       allowNull: true
     }
   }, {

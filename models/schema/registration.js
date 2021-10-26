@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('registration', {
+  return sequelize.define('Registration', {
     objectId: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -44,6 +44,6 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     }
   }, {
-    tableName: 'registration'
+    tableName: 'Registration'
   });
 };

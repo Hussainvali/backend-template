@@ -60,9 +60,8 @@ passport.use("login", new LocalStrategy(
         const where = {
             email: username
         };
-        getSingleRow(db.User, where)
+        getSingleRow(db.Registration, where)
             .then((user) => {
-                console.log("user",user);
                 if (!user) {
                     return done({ message: "Check username", error_code: "wrong_user_or_password", status: 200 }, false);
                 }

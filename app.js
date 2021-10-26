@@ -3,6 +3,8 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
 const path= require('path');
+const passport= require('passport');
+const bodyParser = require('body-parser')
 
 const httpErrors = require("http-errors");
 const addHeaders = require("./middlewares/addHeaders");
@@ -15,6 +17,17 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use(passport.initialize());
+app.use(express.json({
+  limit: '50mb'
+}));
+
+app.use(express.urlencoded({
+  limit: '50mb',
+  parameterLimit: 100000,
+  extended: true 
+}));
 
 app.use(addHeaders());
 

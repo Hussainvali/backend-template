@@ -6,7 +6,7 @@
     },
     "private": true,
     "scripts": {
-        "start": "npm run dev",
+        "start": "DB_USER=hussain DB_PASSWORD=44ggwzDdBU6VCYg5 node index.js",
         "dev": "NODE_ENV=development DB_USER=hussain DB_PASSWORD=44ggwzDdBU6VCYg5 node index.js",
         "prod": "NODE_ENV=production DB_USER=hussain DB_PASSWORD=44ggwzDdBU6VCYg5 node index.js"
     },
@@ -14,6 +14,7 @@
         "@google-cloud/logging-winston": "0.11.1",
         "app-root-path": "^3.0.0",
         "axios": "^0.21.1",
+        "body-parser": "^1.19.0",
         "cookie-parser": "~1.4.3",
         "cors": "^2.8.5",
         "express": "~4.16.0",

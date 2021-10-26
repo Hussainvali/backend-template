@@ -20,16 +20,16 @@ const checkTopicNameExist = async (db, user, topic_name) => {
 
 }
 
-const savePost = async (db,objectId,UserId,TopicId,images,name,description) => {
+const savePost = async (db,objectId,userId,images,description,lat,lng) => {
 
     return new Promise((resolve, reject) => {
         const queryData = {
             objectId,
-            UserId,
-            TopicId,
+            UserId:userId,
             images,
-            name,
-            description
+            lat,
+            description,
+            lng
         }
         createData(db.Post, queryData).then((data) => {
             resolve(data);
@@ -43,9 +43,9 @@ const savePost = async (db,objectId,UserId,TopicId,images,name,description) => {
 
 module.exports.getCreatePostParams = () => [
 
-    { type: "string", value: "topic_name" },
-    { type: "string", value: "name" },
-    { type: "string", value: "description" }
+    { type: "string", value: "description" },
+    { type: "string", value: "lat" },
+    { type: "string", value: "lng" }
 
 ]
 
@@ -55,25 +55,14 @@ module.exports.createPost = async (req, res) => {
     const { db } = req.headers;
     const { user } = req;
 
-    let topicName = req.body.topic_name.toLowerCase();
-
-    let result = await checkTopicNameExist(db, user, topicName)
-
-    if (result == null) {
-        response.data = "error";
-        response.message = "topic name not found";
-        response.data = result;
-        return res.status(200).json(response);
-    }
-
     let filesInfo = req.files;
 
 
     let objectId=newObjectId();
-    let topicId=result.objectId;
     let userId=user.objectId;
-    let name=req.body.name;
     let description=req.body.description;
+    let lat=req.body.lat;
+    let lng=req.body.lng;
     
     let images = [];
 
@@ -88,8 +77,7 @@ module.exports.createPost = async (req, res) => {
     for (const iterator of filesInfo) {
         images.push(path.join(iterator.destination, iterator.filename))
     }
-
-    await savePost(db,objectId,userId,topicId,images,name,description);
+    await savePost(db,objectId,userId,images,description,lat,lng);
 
     response.data = "success";
     response.message = "post created Successfully";
